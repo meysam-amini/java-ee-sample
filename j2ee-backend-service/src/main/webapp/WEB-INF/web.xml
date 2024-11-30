@@ -1,0 +1,17 @@
+<!--Configure the web.xml Deployment Descriptor (Optional)
+
+If your application is packaged as a WAR file, include a web.xml file in src/main/webapp/WEB-INF-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+    <display-name>TaskManager</display-name>
+
+    <servlet>
+        <servlet-name>JAX-RS</servlet-name>
+        <servlet-class>jakarta.ws.rs.core.Application</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>JAX-RS</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+</web-app>

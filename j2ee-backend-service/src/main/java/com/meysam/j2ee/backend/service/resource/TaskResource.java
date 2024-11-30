@@ -7,6 +7,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
+/*here we create a JAX-RS resource class to expose the TaskService methods as RESTful APIs.*/
+
 @Path("/tasks")
 public class TaskResource {
 
