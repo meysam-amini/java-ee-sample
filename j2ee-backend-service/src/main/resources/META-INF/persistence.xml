@@ -1,0 +1,12 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="taskPU">
+        <class>com.meysam.j2ee.backend.service.model.Task</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/task" />
+            <property name="javax.persistence.jdbc.user" value="admin" />
+            <property name="javax.persistence.jdbc.password" value="password" />
+            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+        </properties>
+    </persistence-unit>
+</persistence>

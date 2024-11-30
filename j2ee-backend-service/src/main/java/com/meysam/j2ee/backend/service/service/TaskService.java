@@ -4,6 +4,7 @@ import com.meysam.j2ee.backend.service.model.Task;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jdk.internal.org.jline.utils.ShutdownHooks;
 
 import java.util.List;
 
