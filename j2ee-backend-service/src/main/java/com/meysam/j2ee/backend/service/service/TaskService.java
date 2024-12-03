@@ -1,10 +1,10 @@
 package com.meysam.j2ee.backend.service.service;
 
 import com.meysam.j2ee.backend.service.model.Task;
-import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /*here we implement a stateless session bean for the business logic. This class will interact with the database using JPA.*/
