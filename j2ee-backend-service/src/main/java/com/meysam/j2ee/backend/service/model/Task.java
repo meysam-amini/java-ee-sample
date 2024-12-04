@@ -1,9 +1,9 @@
 package com.meysam.j2ee.backend.service.model;
 
 
+import jakarta.persistence.*;
 import lombok.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table

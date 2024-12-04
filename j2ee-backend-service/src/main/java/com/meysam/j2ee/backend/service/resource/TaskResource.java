@@ -2,10 +2,10 @@ package com.meysam.j2ee.backend.service.resource;
 
 import com.meysam.j2ee.backend.service.model.Task;
 import com.meysam.j2ee.backend.service.service.TaskService;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 
-import javax.inject.Inject;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 /*here we create a JAX-RS resource class to expose the TaskService methods as RESTful APIs.*/

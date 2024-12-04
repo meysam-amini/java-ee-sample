@@ -1,47 +1,18 @@
-<!--<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">-->
-<!--    <persistence-unit name="taskPU">-->
-<!--        <class>com.meysam.j2ee.backend.service.model.Task</class>-->
-<!--        <properties>-->
-<!--            <property name="jakarta.persistence.provider" value="org.eclipse.persistence.jpa.PersistenceProvider"/>-->
-<!--            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://1.2.3.4:5432/task" />-->
-<!--            <property name="javax.persistence.jdbc.user" value="usr" />-->
-<!--            <property name="javax.persistence.jdbc.password" value="pass" />-->
-<!--            <property name="jakarta.persistence.schema-generation.database.action" value="create" />-->
-<!--        </properties>-->
-<!--    </persistence-unit>-->
-<!--</persistence>-->
-
-<!--above configuration directly specifies the database connection properties (jdbc.driver, jdbc.url, etc.) within the application.
-However, since you're deploying to WebLogic, it's best practice to use a JNDI-based DataSource for database connectivity.
-This approach allows WebLogic to manage the database connection pool, and your application can refer to it dynamically.-->
-
-<!--Updated persistence.xml :-->
-
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
-    <persistence-unit name="taskPU" transaction-type="JTA">
-        <jta-data-source>jdbc/task</jta-data-source>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             version="3.0">
+    <persistence-unit name="j2ee-crud-pu">
         <class>com.meysam.j2ee.backend.service.model.Task</class>
         <properties>
-            <property name="jakarta.persistence.provider" value="org.eclipse.persistence.jpa.PersistenceProvider" />
-            <property name="jakarta.persistence.schema-generation.database.action" value="create" />
+            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://163.5.94.91:5432/task"/>
+            <property name="jakarta.persistence.jdbc.user" value="admin"/>
+            <property name="jakarta.persistence.jdbc.password" value="password"/>
+            <!-- Enable EclipseLink table generation -->
+            <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="database"/>
+
+            <!-- Optional: Log SQL statements -->
+            <property name="eclipselink.logging.level" value="FINE"/>
         </properties>
     </persistence-unit>
 </persistence>
-
-<!--Key Changes:
-
-    JTA Transaction Type:
-        The transaction-type="JTA" indicates that the persistence unit uses JTA transactions, which are managed by WebLogic.
-
-    JNDI DataSource:
-        The <jta-data-source> element specifies the JNDI name of the DataSource (e.g., jdbc/TaskDataSource) configured in WebLogic Admin Console.
-
-    Provider Configuration:
-        The jakarta.persistence.provider remains as org.eclipse.persistence.jpa.PersistenceProvider.
-
-    Removed JDBC Properties:
-        Removed the javax.persistence.jdbc.driver, javax.persistence.jdbc.url, javax.persistence.jdbc.user, and javax.persistence.jdbc.password properties since
-        WebLogic will handle these through the DataSource.
-
--->

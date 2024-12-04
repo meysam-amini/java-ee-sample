@@ -1,10 +1,10 @@
 package com.meysam.j2ee.backend.service.service;
 
 import com.meysam.j2ee.backend.service.model.Task;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 /*here we implement a stateless session bean for the business logic. This class will interact with the database using JPA.*/
@@ -19,8 +19,13 @@ public class TaskService {
         return em.createQuery("SELECT t FROM Task t", Task.class).getResultList();
     }
 
-    public void addTask(Task task) {
+    public Task addTask(Task task) {
         em.persist(task);
+        return task;
+    }
+
+    public Task findTask(Long id) {
+        return em.find(Task.class, id);
     }
 
     public void deleteTask(Long id) {
